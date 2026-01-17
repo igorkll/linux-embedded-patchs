@@ -1,0 +1,62 @@
+diff --git a/drivers/tty/vt/keyboard.c b/drivers/tty/vt/keyboard.c
+index a2116e135..254f8dcc6 100644
+--- a/drivers/tty/vt/keyboard.c
++++ b/drivers/tty/vt/keyboard.c
+@@ -550,42 +550,17 @@ static void fn_bare_num(struct vc_data *vc)
+ 
+ static void fn_lastcons(struct vc_data *vc)
+ {
+-	/* switch to the last used console, ChN */
+-	set_console(last_console);
++	return; //disabled
+ }
+ 
+ static void fn_dec_console(struct vc_data *vc)
+ {
+-	int i, cur = fg_console;
+-
+-	/* Currently switching?  Queue this next switch relative to that. */
+-	if (want_console != -1)
+-		cur = want_console;
+-
+-	for (i = cur - 1; i != cur; i--) {
+-		if (i == -1)
+-			i = MAX_NR_CONSOLES - 1;
+-		if (vc_cons_allocated(i))
+-			break;
+-	}
+-	set_console(i);
++	return; //disabled
+ }
+ 
+ static void fn_inc_console(struct vc_data *vc)
+ {
+-	int i, cur = fg_console;
+-
+-	/* Currently switching?  Queue this next switch relative to that. */
+-	if (want_console != -1)
+-		cur = want_console;
+-
+-	for (i = cur+1; i != cur; i++) {
+-		if (i == MAX_NR_CONSOLES)
+-			i = 0;
+-		if (vc_cons_allocated(i))
+-			break;
+-	}
+-	set_console(i);
++	return; //disabled
+ }
+ 
+ static void fn_send_intr(struct vc_data *vc)
+@@ -757,10 +732,7 @@ static void k_dead(struct vc_data *vc, unsigned char value, char up_flag)
+ 
+ static void k_cons(struct vc_data *vc, unsigned char value, char up_flag)
+ {
+-	if (up_flag)
+-		return;
+-
+-	set_console(value);
++	return; //disabled
+ }
+ 
+ static void k_fn(struct vc_data *vc, unsigned char value, char up_flag)
