@@ -3,7 +3,7 @@ a set of patches for embedded linux-based systems
 the patches were tested on kernel version 6.8.12
 
 ## pathes
-* disable_vt_swithing_from_keyboard.patch - disables VT switching at the kernel level, but VT switching can still work from x11
+* disable_vt_swithing_from_keyboard.patch - disables VT switching at the kernel level, but VT switching can still work from x11. it completely kills VT switching from the keyboard, but does not prevent VT switching from userspace (for example, via chvt)
 
 ## recommended kernel parameters
 * sysrq=0 - for obvious reasons, sysrq should be disabled on an embedded device
