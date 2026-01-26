@@ -8,6 +8,11 @@ the patches were tested on kernel version 6.8.12
 * disable_cad.patch - blocks restarting by pressing ctrl+alt+del
 * disable_printk.patch - will make the kernel shut up
 
+## apply patch
+patches are applied to the kernel source code before it is build
+run this command for the necessary patches from the kernel source folder:
+patch -p1 < kernel_patch.patch
+
 ## disabling switching VT at the x11 level
 path: /etc/X11/xorg.conf.d/10-novtswitch.conf  
 content:
