@@ -1,21 +1,20 @@
 diff --git a/drivers/tty/vt/keyboard.c b/drivers/tty/vt/keyboard.c
-index a2116e135..254f8dcc6 100644
+index a2116e135..ac0d0340c 100755
 --- a/drivers/tty/vt/keyboard.c
 +++ b/drivers/tty/vt/keyboard.c
-@@ -550,42 +550,17 @@ static void fn_bare_num(struct vc_data *vc)
- 
+@@ -551,7 +551,7 @@ static void fn_bare_num(struct vc_data *vc)
  static void fn_lastcons(struct vc_data *vc)
  {
--	/* switch to the last used console, ChN */
+ 	/* switch to the last used console, ChN */
 -	set_console(last_console);
-+	return; //disabled
++	//set_console(last_console);
  }
  
  static void fn_dec_console(struct vc_data *vc)
- {
--	int i, cur = fg_console;
--
--	/* Currently switching?  Queue this next switch relative to that. */
+@@ -559,16 +559,16 @@ static void fn_dec_console(struct vc_data *vc)
+ 	int i, cur = fg_console;
+ 
+ 	/* Currently switching?  Queue this next switch relative to that. */
 -	if (want_console != -1)
 -		cur = want_console;
 -
@@ -26,14 +25,23 @@ index a2116e135..254f8dcc6 100644
 -			break;
 -	}
 -	set_console(i);
-+	return; //disabled
++	//if (want_console != -1)
++	//	cur = want_console;
++	//
++	//for (i = cur - 1; i != cur; i--) {
++	//	if (i == -1)
++	//		i = MAX_NR_CONSOLES - 1;
++	//	if (vc_cons_allocated(i))
++	//		break;
++	//}
++	//set_console(i);
  }
  
  static void fn_inc_console(struct vc_data *vc)
- {
--	int i, cur = fg_console;
--
--	/* Currently switching?  Queue this next switch relative to that. */
+@@ -576,16 +576,16 @@ static void fn_inc_console(struct vc_data *vc)
+ 	int i, cur = fg_console;
+ 
+ 	/* Currently switching?  Queue this next switch relative to that. */
 -	if (want_console != -1)
 -		cur = want_console;
 -
@@ -44,11 +52,20 @@ index a2116e135..254f8dcc6 100644
 -			break;
 -	}
 -	set_console(i);
-+	return; //disabled
++	//if (want_console != -1)
++	//	cur = want_console;
++	//
++	//for (i = cur+1; i != cur; i++) {
++	//	if (i == MAX_NR_CONSOLES)
++	//		i = 0;
++	//	if (vc_cons_allocated(i))
++	//		break;
++	//}
++	//set_console(i);
  }
  
  static void fn_send_intr(struct vc_data *vc)
-@@ -757,10 +732,7 @@ static void k_dead(struct vc_data *vc, unsigned char value, char up_flag)
+@@ -757,10 +757,10 @@ static void k_dead(struct vc_data *vc, unsigned char value, char up_flag)
  
  static void k_cons(struct vc_data *vc, unsigned char value, char up_flag)
  {
@@ -56,7 +73,10 @@ index a2116e135..254f8dcc6 100644
 -		return;
 -
 -	set_console(value);
-+	return; //disabled
++	//if (up_flag)
++	//	return;
++	//
++	//set_console(value);
  }
  
  static void k_fn(struct vc_data *vc, unsigned char value, char up_flag)

@@ -1,0 +1,23 @@
+diff --git a/kernel/reboot.c b/kernel/reboot.c
+index 22c16e256..f867389c9 100755
+--- a/kernel/reboot.c
++++ b/kernel/reboot.c
+@@ -814,12 +814,12 @@ static void deferred_cad(struct work_struct *dummy)
+  */
+ void ctrl_alt_del(void)
+ {
+-	static DECLARE_WORK(cad_work, deferred_cad);
+-
+-	if (C_A_D)
+-		schedule_work(&cad_work);
+-	else
+-		kill_cad_pid(SIGINT, 1);
++	//static DECLARE_WORK(cad_work, deferred_cad);
++	//
++	//if (C_A_D)
++	//	schedule_work(&cad_work);
++	//else
++	//	kill_cad_pid(SIGINT, 1);
+ }
+ 
+ #define POWEROFF_CMD_PATH_LEN  256
