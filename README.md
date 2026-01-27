@@ -1,4 +1,4 @@
-# linux-embedded-patches
+# linux embedded patches
 a set of patches for embedded linux systems
 the patches were tested on kernel version 6.8.12
 these patches should also work on newer kernel versions, because the `patch` utility applies changes using contextual lines and can automatically adjust offsets if the surrounding code has shifted
