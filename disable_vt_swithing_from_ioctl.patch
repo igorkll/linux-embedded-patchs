@@ -1,0 +1,27 @@
+diff --git a/drivers/tty/vt/vt_ioctl.c b/drivers/tty/vt/vt_ioctl.c
+index 8c685b501..0aab3e9f3 100755
+--- a/drivers/tty/vt/vt_ioctl.c
++++ b/drivers/tty/vt/vt_ioctl.c
+@@ -844,14 +844,14 @@ int vt_ioctl(struct tty_struct *tty,
+ 		if (arg == 0 || arg > MAX_NR_CONSOLES)
+ 			return -ENXIO;
+ 
+-		arg--;
+-		arg = array_index_nospec(arg, MAX_NR_CONSOLES);
+-		console_lock();
+-		ret = vc_allocate(arg);
+-		console_unlock();
+-		if (ret)
+-			return ret;
+-		set_console(arg);
++		//arg--;
++		//arg = array_index_nospec(arg, MAX_NR_CONSOLES);
++		//console_lock();
++		//ret = vc_allocate(arg);
++		//console_unlock();
++		//if (ret)
++		//	return ret;
++		//set_console(arg);
+ 		break;
+ 
+ 	case VT_SETACTIVATE:
