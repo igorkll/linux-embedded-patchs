@@ -33,6 +33,13 @@ Section "ServerFlags"
 EndSection
 ```
 
+## disabling VT switching at the wayland level of the "weston" composer
+### in "weston.ini", set "vt-switching" to false in the "keyboard" section
+```
+[keyboard]
+vt-switching=false
+```
+
 ## warnings
 * if you disabled VT switching in the kernel through the "disable_vt_swithing_from_keyboard.patch" patch but did not disable it at the graphics session level, then you may get a situation where it is possible to switch from the graphics session but you cannot switch back. you also need to disable this at the X11 level (it's always easy) or wayland (depends on the compositor, and in some cases you need to patch the compositor or the core with the "disable_vt_swithing_from_wayland.patch" patch)
 * plymouth handle the ESC key to show the boot log, this is not allowed on embedded devices, and that's why I made this patch: https://github.com/igorkll/embedded-plymouth
