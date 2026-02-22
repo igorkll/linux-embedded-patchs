@@ -1,0 +1,30 @@
+diff --git a/drivers/tty/n_tty.c b/drivers/tty/n_tty.c
+index 94fa98108..781ff3933 100644
+--- a/drivers/tty/n_tty.c
++++ b/drivers/tty/n_tty.c
+@@ -1142,7 +1142,7 @@ static void n_tty_receive_break(struct tty_struct *tty)
+ 	if (I_IGNBRK(tty))
+ 		return;
+ 	if (I_BRKINT(tty)) {
+-		isig(SIGINT, tty);
++		//isig(SIGINT, tty);
+ 		return;
+ 	}
+ 	if (I_PARMRK(tty)) {
+@@ -1362,13 +1362,13 @@ static void n_tty_receive_char_special(struct tty_struct *tty, u8 c,
+ 
+ 	if (L_ISIG(tty)) {
+ 		if (c == INTR_CHAR(tty)) {
+-			n_tty_receive_signal_char(tty, SIGINT, c);
++			//n_tty_receive_signal_char(tty, SIGINT, c);
+ 			return;
+ 		} else if (c == QUIT_CHAR(tty)) {
+-			n_tty_receive_signal_char(tty, SIGQUIT, c);
++			//n_tty_receive_signal_char(tty, SIGQUIT, c);
+ 			return;
+ 		} else if (c == SUSP_CHAR(tty)) {
+-			n_tty_receive_signal_char(tty, SIGTSTP, c);
++			//n_tty_receive_signal_char(tty, SIGTSTP, c);
+ 			return;
+ 		}
+ 	}
