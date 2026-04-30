@@ -11,6 +11,10 @@ in order for these patches to work, make sure that `CONFIG_WERROR` is NOT enable
 * https://github.com/igorkll/WinBox-Maker - a program for creating embedded Windows images
 * https://github.com/igorkll/embedded-plymouth - plymouth with a patch to disable ESC key processing (so that the console cannot be displayed during boot)
 
+## buildtest
+to check the build of all patches, you can use the "testbuild.json" by running it through syslbuild  
+this will check the build of all patches on multiple versions of the kernel  
+
 ## pathes
 * disable_vt_swithing_from_keyboard.patch - disables VT switching at the kernel level, but VT switching can still work from x11. it completely kills VT switching from the keyboard, but does not prevent VT switching from userspace (for example, via chvt). please note that if you disabled VT switching using the patch, it will only work in tty! switching processing can still occur at the graphics session level, it's easy to disable in x11, but it depends on the compositor in wayland
 * disable_sysrq.patch - it completely prohibits the operation of sysrq, regardless of the kernel parameters
