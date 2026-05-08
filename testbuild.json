@@ -1,6 +1,5 @@
 {
     "builditems": [
-        /*
         {
             "type": "kernel",
             "name": "test_6_8_12.img",
@@ -24,7 +23,7 @@
                 "kernel_config_changes.txt",
                 "kernel_config_changes_x86.txt"
             ]
-        },*/
+        },
         {
             "type": "kernel",
             "name": "test_7_0.img",
