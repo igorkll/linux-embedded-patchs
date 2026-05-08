@@ -1,0 +1,13 @@
+diff --git a/kernel/printk/printk.c b/kernel/printk/printk.c
+index 032314954..6e14597c9 100755
+--- a/kernel/printk/printk.c
++++ b/kernel/printk/printk.c
+@@ -2424,6 +2424,8 @@ asmlinkage int vprintk_emit(int facility, int level,
+ 			    const struct dev_printk_info *dev_info,
+ 			    const char *fmt, va_list args)
+ {
++	return 0;
++	
+ 	struct console_flush_type ft;
+ 	int printed_len;
+ 

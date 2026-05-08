@@ -3,7 +3,8 @@
 a set of patches for embedded linux systems
 the patches were tested on kernel version 6.8.12
 these patches should also work on newer kernel versions, because the `patch` utility applies changes using contextual lines and can automatically adjust offsets if the surrounding code has shifted
-in order for these patches to work, make sure that `CONFIG_WERROR` is NOT enabled in the kernel config
+in order for these patches to work, make sure that `CONFIG_WERROR` is NOT enabled in the kernel config  
+please note that there are other patch versions for newer kernel versions  
 
 ## you may also be interested in
 * https://github.com/igorkll/custom-debian-initramfs-init - custom /init script for debian initramfs
@@ -16,6 +17,7 @@ to check the build of all patches, you can use the "testbuild.json" by running i
 this will check the build of all patches on multiple versions of the kernel  
 
 ## pathes
+* 7.0/* - some patches have been redesigned for the new 7.0 kernel version.
 * disable_vt_swithing_from_keyboard.patch - disables VT switching at the kernel level, but VT switching can still work from x11. it completely kills VT switching from the keyboard, but does not prevent VT switching from userspace (for example, via chvt). please note that if you disabled VT switching using the patch, it will only work in tty! switching processing can still occur at the graphics session level, it's easy to disable in x11, but it depends on the compositor in wayland
 * disable_sysrq.patch - it completely prohibits the operation of sysrq, regardless of the kernel parameters
 * disable_cad.patch - blocks restarting by pressing ctrl+alt+del
@@ -49,3 +51,22 @@ vt-switching=false
 ## warnings
 * if you disabled VT switching in the kernel through the "disable_vt_swithing_from_keyboard.patch" patch but did not disable it at the graphics session level, then you may get a situation where it is possible to switch from the graphics session but you cannot switch back. you also need to disable this at the X11 level (it's always easy) or wayland (depends on the compositor, and in some cases you need to patch the compositor or the core with the "disable_vt_swithing_from_wayland.patch" patch)
 * plymouth handle the ESC key to show the boot log, this is not allowed on embedded devices, and that's why I made this patch: https://github.com/igorkll/embedded-plymouth
+
+## create kernel patch guide
+
+### if you make patches in a directory created by syslbuild, all files and directories will be owned by root, so change this
+1. sudo chmod -R 755 .
+2. sudo chown -R $USER: .
+
+### if the .git directory doesn't exist yet
+1. download and unpack the kernel source code
+2. open the terminal in this directory
+3. command: git init
+4. command: git add .
+5. command: git commit -m "Initial commit"
+
+### make patch
+1. make you changes
+2. command: git add .
+3. command: git commit -m "kernel patch"
+4. export: git diff HEAD~1 HEAD > example.patch
