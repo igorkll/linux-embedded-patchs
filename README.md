@@ -11,6 +11,12 @@ please note that there are other patch versions for newer kernel versions
 * https://github.com/igorkll/syslbuild - creating custom embedded linux systems
 * https://github.com/igorkll/WinBox-Maker - a program for creating embedded Windows images
 * https://github.com/igorkll/embedded-plymouth - plymouth with a patch to disable ESC key processing (so that the console cannot be displayed during boot)
+* https://github.com/igorkll/Gnubox-Maker - a tool for building linux with a single application. It is part of syslbuild and directly uses some of these patches
+
+## roadmap
+* patch to completely disable core dump creation
+* a patch for a complete visual shutdown of VT. not breaking userspace dependent on VT, but completely destroying any possibility of input/output via VT and displaying anything
+* patch for complete removal of OOM killer (possible, I haven't decided yet if this is a good idea)
 
 ## buildtest
 to check the build of all patches, you can use the "testbuild.json" by running it through syslbuild  
