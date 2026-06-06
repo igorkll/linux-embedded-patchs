@@ -17,6 +17,7 @@ please note that there are other patch versions for newer kernel versions
 * patch to completely disable core dump creation
 * a patch for a complete visual shutdown of VT. not breaking userspace dependent on VT, but completely destroying any possibility of input/output via VT and displaying anything
 * patch for complete removal of OOM killer (possible, I haven't decided yet if this is a good idea)
+* a patch to remove reboot and shutdown messages
 
 ## buildtest
 to check the build of all patches, you can use the "testbuild.json" by running it through syslbuild  
@@ -32,6 +33,24 @@ this will check the build of all patches on multiple versions of the kernel
 * disable_keyboard_echo_by_default.patch - disables echo tty mode in the kernel by default. this is necessary because plymouth starts up 100-300 milliseconds after the kernel is started, and for some time (let's say the minimum time) you can print on an empty screen and the letters will appear. of course, it does not interpret commands, but it still violates my principles of a COMPLETELY clean boot screen (COMPLETELY slient boot) and I want to make an apple-level slient boot
 * disable_tty_control_flow.patch - disables control flow at the kernel level (ctrl+s, ctrl+q). it is important on embedded because it sometimes allows the user to interrupt the boot or initialization process.
 * disable_tty_signals.patch - disables sending SIGINT, SIGQUIT, SIGTSTP signals at the kernel level. it is important on embedded because it sometimes allows the user to interrupt the boot or initialization process.
+
+## recommended patch sets for different tasks
+
+### embedded device
+* disable_vt_swithing_from_keyboard.patch
+* disable_sysrq.patch
+* disable_cad.patch
+* disable_tty_control_flow.patch
+* disable_tty_signals.patch
+* disable_keyboard_echo_by_default.patch
+
+### desktop without VT
+* disable_vt_swithing_from_keyboard.patch
+* disable_vt_swithing_from_wayland.patch
+* disable_tty_control_flow.patch
+* disable_tty_signals.patch
+* disable_keyboard_echo_by_default.patch
+* disable_printk.patch
 
 ## apply patch
 patches are applied to the kernel source code before it is build
