@@ -31,6 +31,7 @@ this will check the build of all patches on multiple versions of the kernel
 
 ## pathes
 * 7.0/* - some patches have been redesigned for the new 7.0 kernel version.
+* alternatives/* - if not one of the patch options is suitable for your kernel. you can search for a suitable one in this directory
 * disable_vt_swithing_from_keyboard.patch - disables VT switching at the kernel level, but VT switching can still work from x11. it completely kills VT switching from the keyboard, but does not prevent VT switching from userspace (for example, via chvt). please note that if you disabled VT switching using the patch, it will only work in tty! switching processing can still occur at the graphics session level, it's easy to disable in x11, but it depends on the compositor in wayland
 * disable_sysrq.patch - it completely prohibits the operation of sysrq, regardless of the kernel parameters
 * disable_cad.patch - blocks restarting by pressing ctrl+alt+del
