@@ -81,7 +81,7 @@
                 "disable_tty_signals.patch",
                 "disable_tty_control_flow.patch",
                 "7.0/disable_printk.patch",
-                "alternatives/disable_reboot_and_shutdown_emerg_messages_alt1.patch",
+                "6.6.0/disable_reboot_and_shutdown_emerg_messages.patch",
                 "make_all_emerg_messages_with_alert_loglevel.patch"
             ],
         
