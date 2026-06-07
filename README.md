@@ -12,11 +12,17 @@ please note that there are other patch versions for newer kernel versions
 * https://github.com/igorkll/WinBox-Maker - a program for creating embedded Windows images
 * https://github.com/igorkll/embedded-plymouth - plymouth with a patch to disable ESC key processing (so that the console cannot be displayed during boot)
 * https://github.com/igorkll/Gnubox-Maker - a tool for building linux with a single application. It is part of syslbuild and directly uses some of these patches
+* https://github.com/igorkll/linux-embedded-setup-scripts - scripts for configuring kiosks in linux
 
 ## roadmap
 * patch to completely disable core dump creation
 * a patch for a complete visual shutdown of VT. not breaking userspace dependent on VT, but completely destroying any possibility of input/output via VT and displaying anything
 * patch for complete removal of OOM killer (possible, I haven't decided yet if this is a good idea)
+* a patch to completely disable keyboard echo
+* a patch to completely disable cursor blinking
+* a patch that adds the "fakeconsole" driver so that you can specify "console=fakeconsole". this will allow the output to be routed from anywhere without breaking the userspace as "console=null" does
+
+### completed
 * a patch to remove reboot and shutdown messages
 
 ## buildtest
@@ -33,6 +39,8 @@ this will check the build of all patches on multiple versions of the kernel
 * disable_keyboard_echo_by_default.patch - disables echo tty mode in the kernel by default. this is necessary because plymouth starts up 100-300 milliseconds after the kernel is started, and for some time (let's say the minimum time) you can print on an empty screen and the letters will appear. of course, it does not interpret commands, but it still violates my principles of a COMPLETELY clean boot screen (COMPLETELY slient boot) and I want to make an apple-level slient boot
 * disable_tty_control_flow.patch - disables control flow at the kernel level (ctrl+s, ctrl+q). it is important on embedded because it sometimes allows the user to interrupt the boot or initialization process.
 * disable_tty_signals.patch - disables sending SIGINT, SIGQUIT, SIGTSTP signals at the kernel level. it is important on embedded because it sometimes allows the user to interrupt the boot or initialization process.
+* disable_reboot_and_shutdown_emerg_messages.patch - disables emerg messages from the kernel about rebooting and shutting down. they infuriate me because they cannot be disabled with regular kernel arguments.
+* make_all_emerg_messages_with_alert_loglevel.patch - this patch causes all EMERG messages to be output as an alert. which allows you to prevent their output using: quiet loglevel=0
 
 ## recommended patch sets for different tasks
 

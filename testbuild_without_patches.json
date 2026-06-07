@@ -1,0 +1,34 @@
+{
+    "builditems": [
+        {
+            "build-if-no-filters-or-one-filter-exists": ["6_8_12"],
+
+            "type": "kernel",
+            "name": "test_6_8_12.img",
+            "export": false,
+
+            "kernel_source_url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.8.12.tar.xz",
+            "kernel_output_file": "bzImage",
+    
+            "kernel_config_changes_files": [
+                "kernel_config_changes.txt",
+                "kernel_config_changes_x86.txt"
+            ]
+        },
+        {
+            "build-if-no-filters-or-one-filter-exists": ["7_0"],
+
+            "type": "kernel",
+            "name": "test_7_0.img",
+            "export": false,
+
+            "kernel_source_url": "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.0.tar.xz",
+            "kernel_output_file": "bzImage",
+    
+            "kernel_config_changes_files": [
+                "kernel_config_changes.txt",
+                "kernel_config_changes_x86.txt"
+            ]
+        }
+    ]
+}
