@@ -39,7 +39,7 @@ this will check the build of all patches on multiple versions of the kernel
 * disable_tty_control_flow.patch - disables control flow at the kernel level (ctrl+s, ctrl+q). it is important on embedded because it sometimes allows the user to interrupt the boot or initialization process.
 * disable_tty_signals.patch - disables sending SIGINT, SIGQUIT, SIGTSTP signals at the kernel level. it is important on embedded because it sometimes allows the user to interrupt the boot or initialization process.
 * disable_reboot_and_shutdown_emerg_messages.patch - disables emerg messages from the kernel about rebooting and shutting down. they infuriate me because they cannot be disabled with regular kernel arguments.
-* make_all_emerg_messages_with_alert_loglevel.patch - this patch causes all EMERG messages to be output as an alert. which allows you to prevent their output using: quiet loglevel=0
+* make_all_emerg_messages_with_alert_loglevel.patch - this patch causes all EMERG messages to be output as an ALERT. which allows you to prevent their output using: quiet loglevel=0
 
 ## recommended patch sets for different tasks
 
@@ -65,6 +65,11 @@ this will check the build of all patches on multiple versions of the kernel
 patches are applied to the kernel source code before it is build
 run this command for the necessary patches from the kernel source folder:
 patch -p1 < kernel_patch.patch
+
+## the right way to disable the entire linux boot log using standard tools
+1. activate config in the kernel: CONFIG_NULL_TTY=y
+2. add a single console to the kernel startup arguments: console=ttynull
+the kernel bootlog will disappear completely without source code patches  
 
 ## disabling switching VT at the x11 level
 path: /etc/X11/xorg.conf.d/10-novtswitch.conf  
