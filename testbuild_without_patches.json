@@ -29,6 +29,24 @@
                 "kernel_config_changes.txt",
                 "kernel_config_changes_x86.txt"
             ]
+        },
+        {
+            "build-if-no-filters-or-one-filter-exists": ["opi_zero3"],
+
+            "type": "kernel",
+            "name": "kernel_opi_zero3.img",
+            "export": false,
+    
+            "kernel_source_git": "https://github.com/igorkll/linux-1",
+            "kernel_source_git_branch": "h616-var",
+            "kernel_source_git_checkout": "dab97acb882cae70993a825156452a8fc850fbf3",
+            "kernel_output_file": "Image",
+    
+            "kernel_config_changes_files": [
+                "kernel_config_changes.txt"
+            ],
+        
+            "additional_make_str": "KCFLAGS=\"-Wno-error=incompatible-pointer-types\""
         }
     ]
 }

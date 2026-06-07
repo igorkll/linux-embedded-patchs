@@ -22,7 +22,6 @@ please note that there are other patch versions for newer kernel versions
 * a patch to completely disable cursor blinking
 ### completed
 * a patch to remove reboot and shutdown messages
-* a patch that adds the "fakeconsole" driver so that you can specify "console=fakeconsole". this will allow the output to be routed from anywhere without breaking the userspace as "console=null" does
 
 ## buildtest
 to check the build of all patches, you can use the "testbuild.json" by running it through syslbuild  
@@ -30,7 +29,7 @@ this will check the build of all patches on multiple versions of the kernel
 
 ## pathes
 * 7.0/* - some patches have been redesigned for the new 7.0 kernel version.
-* alternatives/* - if not one of the patch options is suitable for your kernel. you can search for a suitable one in this directory
+* 6.6.0/* - some patches have been redesigned for the old 6.6.0 kernel version.
 * disable_vt_swithing_from_keyboard.patch - disables VT switching at the kernel level, but VT switching can still work from x11. it completely kills VT switching from the keyboard, but does not prevent VT switching from userspace (for example, via chvt). please note that if you disabled VT switching using the patch, it will only work in tty! switching processing can still occur at the graphics session level, it's easy to disable in x11, but it depends on the compositor in wayland
 * disable_sysrq.patch - it completely prohibits the operation of sysrq, regardless of the kernel parameters
 * disable_cad.patch - blocks restarting by pressing ctrl+alt+del
@@ -41,7 +40,6 @@ this will check the build of all patches on multiple versions of the kernel
 * disable_tty_signals.patch - disables sending SIGINT, SIGQUIT, SIGTSTP signals at the kernel level. it is important on embedded because it sometimes allows the user to interrupt the boot or initialization process.
 * disable_reboot_and_shutdown_emerg_messages.patch - disables emerg messages from the kernel about rebooting and shutting down. they infuriate me because they cannot be disabled with regular kernel arguments.
 * make_all_emerg_messages_with_alert_loglevel.patch - this patch causes all EMERG messages to be output as an alert. which allows you to prevent their output using: quiet loglevel=0
-* driver_fakeconsole.patch - adds a fake console driver that can be specified as console=fakeconsole so that the kernel output goes "nowhere" (NOT WORKING AT THE MOMENT)
 
 ## recommended patch sets for different tasks
 
