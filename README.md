@@ -1,8 +1,8 @@
 # linux embedded patches
 ![logo](https://raw.githubusercontent.com/igorkll/linux-embedded-patchs/refs/heads/main/logo.png)  
-a set of patches for embedded linux systems
-the patches were tested on kernel version 6.8.12
-these patches should also work on newer kernel versions, because the `patch` utility applies changes using contextual lines and can automatically adjust offsets if the surrounding code has shifted
+a set of patches for embedded linux systems  
+the patches were tested on kernel version 6.8.12  
+these patches should also work on newer kernel versions, because the `patch` utility applies changes using contextual lines and can automatically adjust offsets if the surrounding code has shifted  
 in order for these patches to work, make sure that `CONFIG_WERROR` is NOT enabled in the kernel config  
 please note that there are other patch versions for newer kernel versions  
 
@@ -20,7 +20,6 @@ please note that there are other patch versions for newer kernel versions
 * patch for complete removal of OOM killer (possible, I haven't decided yet if this is a good idea)
 * a patch to completely disable keyboard echo
 * a patch to completely disable cursor blinking
-
 ### completed
 * a patch to remove reboot and shutdown messages
 * a patch that adds the "fakeconsole" driver so that you can specify "console=fakeconsole". this will allow the output to be routed from anywhere without breaking the userspace as "console=null" does
