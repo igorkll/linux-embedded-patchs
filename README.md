@@ -52,6 +52,8 @@ this will check the build of all patches on multiple versions of the kernel
 * disable_tty_control_flow.patch
 * disable_tty_signals.patch
 * disable_keyboard_echo_by_default.patch
+* disable_reboot_and_shutdown_emerg_messages.patch
+* make_all_emerg_messages_with_alert_loglevel.patch
 
 ### desktop without VT
 * disable_vt_swithing_from_keyboard.patch
