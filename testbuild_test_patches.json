@@ -2,6 +2,7 @@
     "builditems": [
         {
             "build-if-no-filters-or-one-filter-exists": ["6_8_12"],
+            "only_test_patches": true,
 
             "type": "kernel",
             "name": "test_6_8_12.img",
@@ -30,6 +31,7 @@
         },
         {
             "build-if-no-filters-or-one-filter-exists": ["7_0"],
+            "only_test_patches": true,
 
             "type": "kernel",
             "name": "test_7_0.img",
@@ -58,6 +60,7 @@
         },
         {
             "build-if-no-filters-or-one-filter-exists": ["opi_zero3"],
+            "only_test_patches": true,
 
             "type": "kernel",
             "name": "kernel_opi_zero3.img",
