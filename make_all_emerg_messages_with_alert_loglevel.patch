@@ -1,12 +1,12 @@
 diff --git a/kernel/printk/printk.c b/kernel/printk/printk.c
-index 7ca4f6103..4b26efeb0 100755
+index e1b992652..38f9b31fc 100755
 --- a/kernel/printk/printk.c
 +++ b/kernel/printk/printk.c
-@@ -2338,6 +2338,8 @@ asmlinkage int vprintk_emit(int facility, int level,
+@@ -2336,6 +2336,8 @@ asmlinkage int vprintk_emit(int facility, int level,
  		in_sched = true;
  	}
  
-+	if (level == 0) return;
++	if (level == LOGLEVEL_EMERG) level = LOGLEVEL_ALERT;
 +
  	printk_delay(level);
  
