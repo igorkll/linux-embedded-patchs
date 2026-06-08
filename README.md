@@ -39,7 +39,7 @@ this will check the build of all patches on multiple versions of the kernel
 * disable_tty_control_flow.patch - disables control flow at the kernel level (ctrl+s, ctrl+q). it is important on embedded because it sometimes allows the user to interrupt the boot or initialization process.
 * disable_tty_signals.patch - disables sending SIGINT, SIGQUIT, SIGTSTP signals at the kernel level. it is important on embedded because it sometimes allows the user to interrupt the boot or initialization process.
 * disable_reboot_and_shutdown_emerg_messages.patch - disables emerg messages from the kernel about rebooting and shutting down. they infuriate me because they cannot be disabled with regular kernel arguments.
-* make_all_emerg_messages_with_alert_loglevel.patch - this patch causes all EMERG messages to be output as an ALERT. which allows you to prevent their output using: quiet loglevel=0 (Currently, it only works on messages from the kernel itself, it does not work on messages added via /dev/kmsg)
+* make_all_emerg_messages_with_alert_loglevel.patch - this patch causes all EMERG messages to be output as an ALERT. which allows you to prevent their output using: quiet loglevel=0
 
 ## recommended patch sets for different tasks
 
