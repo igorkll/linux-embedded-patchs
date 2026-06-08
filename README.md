@@ -6,6 +6,11 @@ these patches should also work on newer kernel versions, because the `patch` uti
 in order for these patches to work, make sure that `CONFIG_WERROR` is NOT enabled in the kernel config  
 please note that there are other patch versions for newer kernel versions  
 
+## why do we need these
+* to make the device boot process visually more attractive to a non-technical user by removing boot log from the boot screen
+* reduce the attack surface by disabling unwanted linux kernel hotkeys (ctrl-alt-del, sysrq, control flow and signals)
+* hide from the user the fact that your device is running on linux by disabling the ability to switch VT and disabling the ability to display boot log
+
 ## you may also be interested in
 * https://github.com/igorkll/custom-debian-initramfs-init - custom /init script for debian initramfs
 * https://github.com/igorkll/syslbuild - creating custom embedded linux systems
