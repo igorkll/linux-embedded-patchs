@@ -86,6 +86,36 @@
             ],
         
             "additional_make_str": "KCFLAGS=\"-Wno-error=incompatible-pointer-types\""
+        },
+        {
+            "build-if-no-filters-or-one-filter-exists": ["rpi_64"],
+
+            "type": "kernel",
+            "name": "kernel_rpi_64.img",
+            "export": false,
+    
+            "kernel_source_git": "https://github.com/raspberrypi/linux",
+            "kernel_source_git_branch": "rpi-6.12.y",
+            "kernel_source_git_checkout": "359f37f0faefb712add32a39f98751aea67d5c1f",
+            "kernel_output_file": "Image",
+    
+            "patches": [
+                "disable_vt_swithing_from_keyboard.patch",
+                "disable_vt_swithing_from_wayland.patch",
+                "disable_sysrq.patch",
+                "disable_cad.patch",
+                "disable_keyboard_echo_by_default.patch",
+                "disable_tty_signals.patch",
+                "disable_tty_control_flow.patch",
+                "7.0/disable_reboot_and_shutdown_emerg_messages.patch",
+                "make_all_emerg_messages_with_alert_loglevel.patch"
+            ],
+    
+            "kernel_config_changes_files": [
+                "kernel_config_changes.txt"
+            ],
+    
+            "defconfig": "bcm2711_defconfig"
         }
     ]
 }

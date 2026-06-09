@@ -5,6 +5,7 @@ the patches were tested on kernel version 6.8.12
 these patches should also work on newer kernel versions, because the `patch` utility applies changes using contextual lines and can automatically adjust offsets if the surrounding code has shifted  
 in order for these patches to work, make sure that `CONFIG_WERROR` is NOT enabled in the kernel config  
 please note that there are other patch versions for newer kernel versions  
+Attention! if some patch you need is not applied, try patches for other kernel versions, even if they are still different from the current kernel version. there is a high probability that the patch will work  
 
 ## why do we need these
 * to make the device boot process visually more attractive to a non-technical user by removing boot log from the boot screen
