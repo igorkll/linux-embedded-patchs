@@ -67,13 +67,13 @@ this will check the build of all patches on multiple versions of the kernel
 * disable_printk.patch
 
 ## apply patch
-patches are applied to the kernel source code before it is build
-run this command for the necessary patches from the kernel source folder:
-patch -p1 < kernel_patch.patch
+patches are applied to the kernel source code before it is build  
+run this command for the necessary patches from the kernel source folder:  
+patch -p1 < kernel_patch.patch  
 
 ## the right way to disable the entire linux boot log using standard tools
-1. activate config in the kernel: CONFIG_NULL_TTY=y
-2. add a single console to the kernel startup arguments: console=ttynull
+1. activate config in the kernel: CONFIG_NULL_TTY=y  
+2. add a single console to the kernel startup arguments: console=ttynull  
 the kernel bootlog will disappear completely without source code patches  
 
 ## disabling switching VT at the x11 level
