@@ -20,7 +20,7 @@ please note that there are other patch versions for newer kernel versions
 * https://github.com/igorkll/linux-embedded-setup-scripts - scripts for configuring kiosks in linux
 
 ## roadmap
-* patch to completely disable core dump creation (possible, I haven't decided yet if this is a good idea)
+* patch to completely disable core dump creation
 * a patch for a complete visual shutdown of VT. not breaking userspace dependent on VT, but completely destroying any possibility of input/output via VT and displaying anything
 * patch for complete removal of OOM killer (possible, I haven't decided yet if this is a good idea)
 * a patch to completely disable keyboard echo
